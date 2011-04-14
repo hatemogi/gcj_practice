@@ -34,6 +34,9 @@ int main() {
 			cin >> value;
 			items.push_back(Item(value, i));
 		}
+		// items.erase(remove_if(items.begin(), items.end(), compose1(
+		//  	bind2nd(greater<int>(), credit), select1st<Item>()
+		// )), items.end());
 		pair<Item, Item> r = solve(credit,  items);
 		int values[2] = {r.first.second, r.second.second};
 		sort(&values[0], &values[2]);
