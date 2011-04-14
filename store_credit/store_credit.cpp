@@ -7,19 +7,18 @@ using namespace std;
 using namespace __gnu_cxx;
 
 typedef pair<int, int> Item;
+typedef vector<Item>::iterator vit;
 
-pair<Item, Item> solve(int credit, vector<Item>& items) {
-	Item last = items.back();
-	items.pop_back();	
-	vector<Item>::iterator p = find_if(items.begin(), items.end(), compose1(
+pair<Item, Item> solve(int credit, vit pos, vit end) {
+	Item last = *pos++;
+	vit p = find_if(pos, end, compose1(
 		bind2nd(equal_to<int>(), credit - last.first), 
 		select1st<Item>()
 	));
-	if (p != items.end()) {
+	if (p != end) {
 		return pair<Item, Item>(last, *p);
 	} else {
-		if (items.size() <= 2) abort();
-		return solve(credit, items);
+		return solve(credit, pos, end);
 	} 
 }
 
@@ -34,12 +33,9 @@ int main() {
 			cin >> value;
 			items.push_back(Item(value, i));
 		}
-		// items.erase(remove_if(items.begin(), items.end(), compose1(
-		//  	bind2nd(greater<int>(), credit), select1st<Item>()
-		// )), items.end());
-		pair<Item, Item> r = solve(credit,  items);
+		pair<Item, Item> r = solve(credit,  items.begin(), items.end());
 		int values[2] = {r.first.second, r.second.second};
-		sort(&values[0], &values[2]);
+		sort(values, &values[2]);
 		cout << "Case #" << n << ": " << values[0] << " " << values[1] << endl;
 	}
 	return 0;
