@@ -14,11 +14,8 @@ def solve credit, items
   values.collect(&:last).sort
 end
 
-N = gets.to_i
-no = 0
-
-while (c = gets) do 
-  c = c.to_i
+gets.to_i.times do |no|
+  c = gets.to_i
   i, items = gets.to_i, gets.split.collect(&:to_i)
   puts "Case ##{no += 1}: #{solve(c, items).join(' ')}"  
 end
