@@ -10,13 +10,13 @@ typedef pair<int, int> Item;
 typedef vector<Item>::iterator vit;
 
 pair<Item, Item> solve(int credit, vit pos, vit end) {
-	Item last = *pos++;
+	Item head = *pos++;
 	vit p = find_if(pos, end, compose1(
-		bind2nd(equal_to<int>(), credit - last.first), 
+		bind2nd(equal_to<int>(), credit - head.first), 
 		select1st<Item>()
 	));
 	if (p != end) {
-		return pair<Item, Item>(last, *p);
+		return pair<Item, Item>(head, *p);
 	} else {
 		return solve(credit, pos, end);
 	} 

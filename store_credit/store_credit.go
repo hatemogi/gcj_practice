@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt" 
-)
+import f "fmt"
 
 type Item struct {
 	value int
@@ -10,24 +8,23 @@ type Item struct {
 }
 
 func solve(credit int, items []Item) (Item, Item) {
-	head := items[0]
 	for i := 1; i < len(items); i++ {
-		if (items[i].value + head.value == credit) {
-			return head, items[i]
+		if (items[0].value + items[i].value == credit) {
+			return items[0], items[i]
 		}
 	}
-	return solve(credit, items[1:len(items)])
+	return solve(credit, items[1:])
 }
 
 func main() {
 	var n, credit, count, value int
-	fmt.Scanf("%d", &n)
+	f.Scanf("%d", &n)
 	for i := 1; i <= n; i++ {
-		fmt.Scanf("%d", &credit)
-		fmt.Scanf("%d", &count)
+		f.Scanf("%d", &credit)
+		f.Scanf("%d", &count)
 		items := make([]Item, count)
 		for t := 0; t < count; t++ {
-			fmt.Scanf("%d", &value)
+			f.Scanf("%d", &value)
 			items[t] = Item{value, t + 1}
 		}
 		r1, r2 := solve(credit, items[:])
@@ -35,6 +32,6 @@ func main() {
 		if (i1 > i2) {
 			i1, i2 = i2, i1
 		}
-		fmt.Printf("Case #%d: %d %d\n", i, i1, i2)
+		f.Printf("Case #%d: %d %d\n", i, i1, i2)
 	}
 }
