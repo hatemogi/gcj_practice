@@ -17,9 +17,8 @@ pair<Item, Item> solve(int credit, vit pos, vit end) {
 	));
 	if (p != end) {
 		return pair<Item, Item>(head, *p);
-	} else {
-		return solve(credit, pos, end);
 	} 
+	return solve(credit, pos, end);
 }
 
 int main() {
