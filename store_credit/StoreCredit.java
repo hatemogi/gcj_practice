@@ -2,8 +2,7 @@ import java.io.*;
 import java.util.*;
 
 class Item {
-	int value;
-	int index;
+	int value, index;
 	Item(int v, int i) { value = v; index = i; }
 }
 
@@ -12,8 +11,7 @@ public class StoreCredit {
 		Item head = items.remove(0);
 		for (Item e: items) {
 			if (e.value + head.value == credit) {
-				Item[] r = {head, e};
-				return r;
+				return new Item[]{head, e};
 			} 
 		}
 		return solve(credit, items);
