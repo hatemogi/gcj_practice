@@ -15,7 +15,7 @@ object StoreCredit extends Application {
 		val credit = readInt()
 		val count = readInt()
 		val values = readLine.split(" ").map((s: String) => s.toInt).toList
-		val items = values.zip(List.range(1, count + 1))
+		val items = values.zip(List.range(1, count + 1)).filter((i: Item) => i._1 < credit)
 		val r = solve(credit, items)
 		val indice = List(r._1._2, r._2._2).sortWith((a, b) => a < b).mkString(" ")
 		println("Case #" + n + ": " + indice)		

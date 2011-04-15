@@ -20,8 +20,8 @@ func main() {
 	var n, credit, count, value int
 	f.Scanf("%d", &n)
 	for i := 1; i <= n; i++ {
-		f.Scanf("%d", &credit)
-		f.Scanf("%d", &count)
+		f.Scanf("%d %d", &credit, &count)
+		// f.Scanf("%d", &count)
 		items := make([]Item, count)
 		for t := 0; t < count; t++ {
 			f.Scanf("%d", &value)

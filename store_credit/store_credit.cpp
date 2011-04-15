@@ -30,7 +30,9 @@ int main() {
 		vector<Item> items;
 		for (int i = 1; i <= count; i++) {
 			cin >> value;
-			items.push_back(Item(value, i));
+			if (value < credit) {
+				items.push_back(Item(value, i));				
+			}
 		}
 		pair<Item, Item> r = solve(credit,  items.begin(), items.end());
 		int values[2] = {r.first.second, r.second.second};
