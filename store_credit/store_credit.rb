@@ -9,7 +9,7 @@ end
 
 def solve credit, items
   indexed = items.zip((1..items.length).to_a)
-  cand = indexed # indexed.select {|p| p[0] < credit}.sort {|p| p[0]}.reverse 
+  cand = indexed.select {|p| p[0] < credit}.sort {|p| p[0]}.reverse 
   values = _solve(credit, cand)
   values.collect(&:last).sort
 end
