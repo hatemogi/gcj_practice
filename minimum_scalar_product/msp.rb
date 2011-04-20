@@ -1,7 +1,7 @@
 # should be sorted before calling
 def msp v1, v2
   return 0 if v1.empty? or v2.empty?
-  if v1.first <= v2.first or v1.last < v2.last
+  if v1.first < v2.first or (v1.first == v2.first && v1.last <= v2.last)
     v1.shift * v2.pop
   else
     v1.pop * v2.shift
