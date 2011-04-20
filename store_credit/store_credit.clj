@@ -7,7 +7,7 @@
 			found (filter #(= credit (+ (:value %) (:value head))) r)]
 		 (if (not-empty found)
 			(list head (first found)) 
-			(solve credit (rest items)))))
+			(solve credit r))))
 
 
 (defn read-int-line [] (Integer/parseInt (read-line)))
