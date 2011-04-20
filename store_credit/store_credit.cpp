@@ -25,8 +25,7 @@ int main() {
 	int N, credit, count, value;
 	cin >> N;
 	for (int n = 1; n <= N; n++) {
-		cin >> credit;
-		cin >> count;
+		cin >> credit >> count;
 		vector<Item> items;
 		for (int i = 1; i <= count; i++) {
 			cin >> value;
@@ -35,7 +34,7 @@ int main() {
 			}
 		}
 		pair<Item, Item> r = solve(credit,  items.begin(), items.end());
-		int values[2] = {r.first.second, r.second.second};
+		int values[] = {r.first.second, r.second.second};
 		sort(values, &values[2]);
 		cout << "Case #" << n << ": " << values[0] << " " << values[1] << endl;
 	}
