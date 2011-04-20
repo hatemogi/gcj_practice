@@ -1,6 +1,6 @@
 (require 'clojure.string)
-
 (defstruct item :value :index)
+
 (defn solve [credit items]
 	(let [head (first items) 
 			r (rest items) 
@@ -8,7 +8,6 @@
 		 (if (not-empty found)
 			(list head (first found)) 
 			(solve credit r))))
-
 
 (defn read-int-line [] (Integer/parseInt (read-line)))
 
