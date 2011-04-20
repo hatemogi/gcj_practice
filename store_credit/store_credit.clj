@@ -11,12 +11,20 @@
 
 
 (defn read-int-line [] (Integer/parseInt (read-line)))
-(def N (read-int-line))
-(dotimes [n N] 
-	(let [credit (read-int-line)
-			c (read-int-line)
-			items (map #(Integer/parseInt %) (clojure.string/split (read-line) #" "))
-			indexed-items (map (fn [v i] (struct item v i)) items (iterate inc 1))
-			solution (solve credit indexed-items)]
-			(println (str "Case #" (+ 1 n) ": " 
-					(clojure.string/join " " (sort (map :index solution)))))))
+
+(defn read-ints-from-a-line [line]
+	(map #(Integer/parseInt %) (clojure.string/split line #" ")))
+
+(defn indexed-items [line]
+	(map (fn [v i] (struct item v i)) (read-ints-from-a-line line) (iterate inc 1)))
+
+(defn get-sorted-indice [solution]
+	(sort (map #(:index %) solution)))
+
+(defn print-result [n indice] 
+	(println (str "Case #" (+ 1 n) ": " (clojure.string/join " " indice))))
+		
+(dotimes [n (read-int-line)] 
+	(let [credit (read-int-line)]
+		(read-int-line)
+		(print-result n (get-sorted-indice (solve credit (indexed-items (read-line)))))))
