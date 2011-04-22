@@ -15,10 +15,7 @@ pair<Item, Item> solve(int credit, vit pos, vit end) {
 		bind2nd(equal_to<int>(), credit - head.first), 
 		select1st<Item>()
 	));
-	if (p != end) {
-		return pair<Item, Item>(head, *p);
-	} 
-	return solve(credit, pos, end);
+	return (p != end) ? pair<Item, Item>(head, *p) : solve(credit, pos, end);
 }
 
 int main() {
