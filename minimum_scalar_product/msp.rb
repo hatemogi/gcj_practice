@@ -11,5 +11,5 @@ end
 gets.to_i.times do |no|
   gets.to_i
   v1, v2 = gets.split.collect(&:to_i), gets.split.collect(&:to_i)
-  puts "Case ##{no += 1}: #{msp(v1.sort, v2.sort)}"  
+  puts "Case ##{no+1}: #{msp(v1.sort, v2.sort)}"  
 end

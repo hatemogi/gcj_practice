@@ -1,0 +1,4 @@
+Fast Debugger (ruby-debug-ide 0.4.16, ruby-debug-base 0.11) listens on 127.0.0.1:52990
+Case #1: 2 3
+Case #2: 1 4
+Case #3: 4 5
