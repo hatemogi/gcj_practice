@@ -4,9 +4,9 @@
 (defn solve [idx credit prices]
   (let [head (first prices)
         cand (rest prices)
-        another (inc (.indexOf cand (- credit head)))]
-    (if (pos? another)
-      [idx (+ idx another)]
+        another (+ idx 1 (.indexOf cand (- credit head)))]
+    (if (< idx another)
+      [idx another]
       (recur (inc idx) credit cand))))
 
 (dotimes [n (read-string (read-line))]
