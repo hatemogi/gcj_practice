@@ -8,6 +8,6 @@
 
 (dotimes [n (read-string (read-line))]
   (let [[credit _ prices] (repeatedly 3 read-line)
-        prices (->> (re-seq #"\d+" prices) (map read-string))
+        prices (map read-string (re-seq #"\d+" prices))
         a (solve 1 (read-string credit) prices)]
     (println (str "Case #" (inc n) ": " (first a) " " (last a)))))
